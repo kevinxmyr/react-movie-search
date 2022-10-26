@@ -1,0 +1,23 @@
+
+.card{
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  margin: 1rem;
+  width: 250px;
+}
+.posterwrapper{
+  display: flex;
+  justify-content: center;
+}
+img{
+  width: 15rem; 
+  height: auto;
+}
+p{
+  padding: 0;
+  margin: 0;
+}
