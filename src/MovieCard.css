@@ -8,6 +8,8 @@
   padding: 2rem;
   margin: 1rem;
   width: 250px;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .posterwrapper{
   display: flex;
@@ -24,3 +26,12 @@ p{
 a{
   cursor: pointer;
 }
+.overviewTitle{
+  margin: 1rem 0 .5rem 0;
+}
+.cardinfo{
+  display: flex;
+  justify-content: space-between;
+  margin-top: rem;
+  /* transform: translateY(-100%); */
+} 

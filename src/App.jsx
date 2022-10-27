@@ -3,6 +3,7 @@ import './App.css'
 import Footer from './Footer';
 import MovieCard  from './MovieCard'
 import NavBar from './NavBar'
+import ERROR from './ERROR'
 
 function App(props) {
   const [movies, setMovies] = useState([]);
@@ -17,21 +18,22 @@ function App(props) {
     .then(data => setMovies(data.results))
     .catch(err => console.log(`Error fetching in App.js: ${err}`))
   },[])
+  // console.log(movies);
 
   return (
     <div className="App">
 
-      <NavBar m1={movies} m2={setMovies}/>
+      <NavBar m2={setMovies}/>
 
       <h2 className='titleh2'>Search Movies & TV Series</h2>
        <div className='cardwrapper'>
         {
-          movies.map(movie => {
-            console.log(movie)
-            return (
-              <MovieCard URL={props.URL} key={movie.id} {...movie}/>
-              )
-          })
+          movies.length !== 0 ? (
+            movies.map(movie => {
+              return <MovieCard key={movie.id} {...movie} />
+            }) ) : (
+            <ERROR />
+          )
         }
       </div>
      <Footer />
@@ -40,3 +42,10 @@ function App(props) {
 }
 
 export default App
+ // movies.length !== 0 ? (
+          //   movies.map(movie => {
+          //     return <MovieCard URL={props.URL} key={movie.id} {...movie}/>
+          //   }) ) : (
+          //     <ERROR />
+          //   )
+        // }
