@@ -8,20 +8,13 @@ export default function NavBar(props) {
   const URLSearch =
     "https://api.themoviedb.org/3/search/movie?api_key=2532129ebc283ab1884789680a23db9d&page=1&query=";
 
-  const handleSearch = () => {
-    if(search !== ''){
+  const handleSearch = (e) => {
+    if(search !== '' && e.key === 'Enter'){
       return fetch(URLSearch + search)
         .then((res) => res.json())
         .then((data) => props.m2(data.results))
         .catch((err) => console.log("HOY! ERROR: " + err))
-    } else {
-      window.alert('no input found')
-       fetch(URL)
-      .then((res) => res.json())
-      .then((data) => props.m2(data.results))
-      .catch((err) => console.log("HOY! ERROR: " + err))
-    }
-  
+    } 
   };
 
   return (
@@ -30,6 +23,7 @@ export default function NavBar(props) {
         <img className='logo' src={logoNav} alt='logo' />
       </div>
       <input
+        onKeyPress={handleSearch}
         onChange={(e) => setSearch(e.target.value)}
         className='searchinput'
         type='text'

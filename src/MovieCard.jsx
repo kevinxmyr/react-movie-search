@@ -3,12 +3,15 @@ import './MovieCard.css'
 
 export default function MovieCard(props) {
   const poster = 'https://image.tmdb.org/t/p/w500/'
-
+  const posterNotAvailable = 'https://m.media-amazon.com/images/M/MV5BMTRkZGE0YWYtMDFhOS00N2I4LTljMTMtYjk0MTI2YmVhOTU4XkEyXkFqcGdeQXVyNjgxNzM0NDI@._V1_.jpg'
+  
   return (
     // 
       <div className='card'>
         <div className='posterwrapper'>
-          <img src={poster + props.poster_path} alt="poster image" />
+          <a href={props.URL}>
+            <img src={props.poster_path ? poster + props.poster_path : posterNotAvailable} alt="poster" />
+          </a>
         </div>
 
         <div className='info'>
