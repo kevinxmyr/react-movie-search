@@ -8,6 +8,8 @@ export default function NavBar(props) {
   const URLSearch =
     "https://api.themoviedb.org/3/search/movie?api_key=2532129ebc283ab1884789680a23db9d&page=1&query=";
 
+  const URL = props.URL;
+  
   const fetchingData = () => {
     fetch(URLSearch + search)
       .then((res) => res.json())
@@ -26,10 +28,17 @@ export default function NavBar(props) {
       return fetchingData();
     }
   };
+
+  const logoOnClick = () => {
+    fetch(URL)
+    .then(resp => resp.json())
+    .then(dataBlitz => props.m2(dataBlitz.results))
+    .catch(err => console.log(`LOGO ON CLICK ERROR FETCH::::${err}`))
+  }
   return (
     <div className='nav'>
       <div className='logowrapper'>
-        <img className='logo' src={logoNav} alt='logo' />
+        <img onClick={logoOnClick} className='logo' src={logoNav} alt='logo' />
       </div>
       <input
         onKeyPress={handleSearchOnKeyPress}
@@ -37,7 +46,6 @@ export default function NavBar(props) {
         className='searchinput'
         type='text'
         placeholder='search here'
-        required='required'
       />
       <button className='searchbtn' onClick={handleSearchonClick}>
         Search

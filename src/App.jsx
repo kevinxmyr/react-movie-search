@@ -17,13 +17,12 @@ function App(props) {
     .then(res => res.json())
     .then(data => setMovies(data.results))
     .catch(err => console.log(`Error fetching in App.js: ${err}`))
-  },[])
-  // console.log(movies);
+  }, [])
 
   return (
     <div className="App">
 
-      <NavBar m2={setMovies}/>
+      <NavBar m2={setMovies} m1={movies} URL={URL}/>
 
       <h2 className='titleh2'>Search Movies & TV Series</h2>
        <div className='cardwrapper'>
@@ -32,7 +31,7 @@ function App(props) {
             movies.map(movie => {
               return <MovieCard key={movie.id} {...movie} />
             }) ) : (
-            <ERROR />
+             <ERROR />
           )
         }
       </div>

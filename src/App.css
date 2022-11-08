@@ -58,6 +58,7 @@
 .logowrapper{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .searchinput{
   padding: .8rem;
